@@ -1,14 +1,17 @@
-const router = require("express").Router();
+// Imports
+const express = require('express');
+const router = express.Router();
 const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) =>{
+router.get("/", async (req, res) => {
   try {
-    const blogData = await Blog.findAll({
+    // Get all blogPosts and JOIN with user data and comment data
+    const blogPostData = await Blog.findAll({
       include: [
         {
-          model: User, 
-          attributes: ["name", "id"],
+          model: User,
+          attributes: ["name"],
         },
         {
           model: Comment,
@@ -17,10 +20,12 @@ router.get("/", async (req, res) =>{
       ],
     });
 
-    const blogPosts = blogData.map((blogPost) => 
-    blogPost.get({plain: true})
+    // Serialize data so the template can read it
+    const blogPosts = blogPostData.map((blogPost) =>
+      blogPost.get({ plain: true })
     );
 
+    // Pass serialized data and session flag into template
     res.render("homepage", {
       blogPosts,
       logged_in: req.session.logged_in,
@@ -28,7 +33,132 @@ router.get("/", async (req, res) =>{
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
-  };
+  }
+});
+
+// Route set up to find single blog post and render blogPost page
+router.get("/blog/:id", withAuth, async (req, res) => {
+  try {
+    const blogPostData = await Blog.findByPk(req.params.id, {
+      // Join user data and comment data with blog post data
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
+    });
+
+    const blogPost = blogPostData.get({ plain: true });
+    console.log(blogPost);
+
+    res.render("blog", {
+      ...blogPost,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+    res.redirect("/login");
+  }
+});
+
+// route to allow logged in user access to the dashboard page
+// Use withAuth middleware to prevent access to route
+router.get("/dashboard", withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      // Join user blog post and comment data with user data
+      include: [
+        {
+          model: Blog,
+          include: [User],
+        },
+        {
+          model: Comment,
+        },
+      ],
+    });
+
+    const user = userData.get({ plain: true });
+    console.log(user)
+
+    res.render("dashboard", {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// NEW POST PAGE: Renders 'create.handlebars'; redirects to /login if not logged in
+router.get("/create", async (req, res) => {
+  try {
+    if (req.session.logged_in) {
+      res.render("create", {
+        logged_in: req.session.logged_in,
+        userId: req.session.user_id,
+      });
+      return;
+    } else {
+      res.redirect("/login");
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Route set up to be able to edit an existing blog post
+router.get("/create/:id", async (req, res) => {
+  try {
+    const blogPostData = await Blog.findByPk(req.params.id, {
+      // Join user data and comment data with blog post data
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
+    });
+
+    const blogPost = blogPostData.get({ plain: true });
+    console.log(blogPost);
+
+    if (req.session.logged_in) {
+      res.render("edit", {
+        ...blogPost,
+        logged_in: req.session.logged_in,
+        userId: req.session.user_id,
+      });
+      return;
+    } else {
+      res.redirect("/login");
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.all("/login", (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect("/dashboard");
+    return;
+  }
+
+  res.render("login");
 });
 
 // Export

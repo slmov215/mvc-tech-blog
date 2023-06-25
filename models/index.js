@@ -1,7 +1,9 @@
+// Imports
 const User = require("./user");
 const Blog = require("./blog");
 const Comment = require("./comments");
 
+// Sets up relationship between tables and allows me to join them using Sequelize
 User.hasMany(Blog, {
   foreignKey: "user_id",
   onDelete: "CASCADE",
@@ -21,13 +23,14 @@ Comment.belongsTo(User, {
 });
 
 Comment.belongsTo(Blog, {
-  foreignKey: "blog_id",
+  foreignKey: "blogPost_id",
   onDelete: "CASCADE",
 });
 
 Blog.hasMany(Comment, {
-  foreignKey: "blog_id",
+  foreignKey: "blogPost_id",
   onDelete: "CASCADE",
 });
 
+// Export
 module.exports = { User, Blog, Comment };

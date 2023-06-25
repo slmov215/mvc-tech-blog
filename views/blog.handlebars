@@ -1,0 +1,17 @@
+{{!-- Blog Post Page --}}
+<div class="container">
+    <div class="row">
+        <div class="card text-dark shadow mb-3 blogPost-main">
+          {{!-- <a href="/blog/{{hid}}" class="card-body"></a> --}}
+            <div class="text-center mx-auto p-3">
+                <h2>{{title}}</h2>
+                <p>Created by {{user.name}} on {{format_date date_created}}</p>
+                <p>{{description}}</p>
+                <button class="btn btn-dark" id="editBtn">Edit</button>
+                <button class="btn btn-dark" id="deleteBtn">Delete</button>
+            </div>
+
+
+<script src="/mvc-tech-blog/public/js/blogHandler.js"></script>
+<script src="/mvc-tech-blog/public/js/dashboard.js"></script>
+<script src="/mvc-tech-blog/public/js/editBlog.js"></script>
