@@ -11,6 +11,7 @@ router.post("/", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
+      console.log(userData, 'hi');
       res.status(200).json(userData);
     });
   } catch (err) {
@@ -24,7 +25,7 @@ router.post("/login", async (req, res) => {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
-      console.log("no user found");
+      console.log("User not found");
       res
         .status(400)
         .json({ message: "Your email or password is incorrect, please try again!" });
@@ -34,7 +35,7 @@ router.post("/login", async (req, res) => {
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      console.log("no password match");
+      console.log("Password does not match");
       res
         .status(400)
         .json({ message: "Your email or password is incorrect, please try again!" });
