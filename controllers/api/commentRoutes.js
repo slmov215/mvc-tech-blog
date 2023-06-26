@@ -1,6 +1,6 @@
 // Imports
 const router = require("express").Router();
-const { Blog, Comment, User } = require("../../models");
+const { BlogPost, Comment, User } = require("../../models");
 
 // CREATE Comment
 router.post("/", async (req, res) => {
@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
     console.log("we made it");
     const comment = await Comment.create({
       comment_body: req.body.comment_body,
-      blog_id: req.body.blog_id,
+      blogPost_id: req.body.blogPost_id,
       user_id: req.session.user_id || req.body.user_id,
     });
 
@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
           attributes: ["username"],
         },
         {
-          model: Blog,
+          model: BlogPost,
           attributes: ["id"],
         },
       ],
@@ -50,7 +50,7 @@ router.put("/:id", async (req, res) => {
     });
 
     if (!updatedComment[0]) {
-      res.status(400).json({ message: "No comment found with that id!" });
+      res.status(400).json({ message: "There's no comment found with that id!" });
       return;
     }
 
@@ -71,7 +71,7 @@ router.delete("/:id", async (req, res) => {
       },
     });
     if (!comment) {
-      res.status(404).json({ message: "No comment found with that id!" });
+      res.status(404).json({ message: "There's no comment found with that id!" });
       return;
     }
     res.status(200).json(comment);

@@ -1,13 +1,12 @@
 // Imports
-const express = require('express');
-const router = express.Router();
-const { Blog, User, Comment } = require("../models");
+const router = require("express").Router();
+const { BlogPost, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
     // Get all blogPosts and JOIN with user data and comment data
-    const blogPostData = await Blog.findAll({
+    const blogPostData = await BlogPost.findAll({
       include: [
         {
           model: User,
@@ -37,9 +36,9 @@ router.get("/", async (req, res) => {
 });
 
 // Route set up to find single blog post and render blogPost page
-router.get("/blog/:id", withAuth, async (req, res) => {
+router.get("/blogPost/:id", withAuth, async (req, res) => {
   try {
-    const blogPostData = await Blog.findByPk(req.params.id, {
+    const blogPostData = await BlogPost.findByPk(req.params.id, {
       // Join user data and comment data with blog post data
       include: [
         {
@@ -56,7 +55,7 @@ router.get("/blog/:id", withAuth, async (req, res) => {
     const blogPost = blogPostData.get({ plain: true });
     console.log(blogPost);
 
-    res.render("blog", {
+    res.render("blogPost", {
       ...blogPost,
       logged_in: req.session.logged_in,
     });
@@ -76,7 +75,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
       // Join user blog post and comment data with user data
       include: [
         {
-          model: Blog,
+          model: BlogPost,
           include: [User],
         },
         {
@@ -118,7 +117,7 @@ router.get("/create", async (req, res) => {
 // Route set up to be able to edit an existing blog post
 router.get("/create/:id", async (req, res) => {
   try {
-    const blogPostData = await Blog.findByPk(req.params.id, {
+    const blogPostData = await BlogPost.findByPk(req.params.id, {
       // Join user data and comment data with blog post data
       include: [
         {

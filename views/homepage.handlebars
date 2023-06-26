@@ -1,21 +1,22 @@
-<h1 class="display-flex text-center justify-space-between align-center p-2">The Tech Blog</h1>
+{{! Homepage }}
+{{! Loop over each object in the blogPosts array }}
 <div class="container">
-  <div class="row homepage-main">
+  <div class="row homepage-main text-center">
     {{#each blogPosts as |blogPost|}}
-      <div class="row mb-4 project card text-dark shadow">
-        <div class="card-header">
-          <h3>
-            <a href="/blog/{{blogPost.id}}">{{blogPost.title}}</a>
-          </h3>
-          <p>Created by
-            {{blogPost.user.name}}
-            on
-            {{format_date blogPost.date_created}}</p>
-        </div>
-        <div class="card-body">
-          <p>{{blogPost.description}}</p>
-        </div>
+    <div class="row mb-4 project card text-dark shadow col-md-10 mx-auto text-left mt-5">
+      <div class="">
+        <h3>
+          <a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a>
+        </h3>
+        <p>Created by
+          {{blogPost.user.name}}
+          on
+          {{format_date blogPost.date_created}}</p>
       </div>
+      <div class="">
+        <p>{{blogPost.description}}</p>
+      </div>
+    </div>
     {{/each}}
   </div>
 </div>

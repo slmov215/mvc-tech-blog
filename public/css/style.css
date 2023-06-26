@@ -1,24 +1,80 @@
-header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+/* General page styles */
+
+header {
+  font-family: "Jomolhari", serif;
 }
 
-.no-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
+body {
+  /* background-color: #a28089; */
 }
 
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
+h1 {
+  font-family: "Jomolhari", serif;
+  /* background-color: teal;
+  color: #ffb3c6; */
+  padding: 16px;
+  margin-bottom: 5px;
 }
 
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
+#blogName {
+  color: #ffe5ec;
+}
+
+main {
+  font-family: "Jomolhari", serif;
+  margin-top: -5px;
+  /* background-color: #a28089; */
+}
+
+.homepage-main {
+  margin-top: 34px;
+}
+
+.user-name {
+  background-color: #212529;
+}
+
+.blogPost-main {
+  margin-top: 34px;
+}
+
+/* Nav styles */
+
+.navBar {
+  background-color: #f1dddf;
+}
+
+#logout {
+  /* background-color: #b6b2f9; */
+}
+
+/* Input/textarea styles */
+
+#titleInput,
+#bodyInput,
+#comment,
+#email-login,
+#password-login,
+#name-signup,
+#email-signup,
+#password-signup {
+  background-color: #e5eaf5;
+}
+
+/* Button styles */
+
+.btn {
+  background-color: #0dcaf0;
+}
+
+/* Card styles */
+
+.card {
+  background-color: #fcebf0;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
 }
