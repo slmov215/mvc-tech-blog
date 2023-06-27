@@ -30,14 +30,14 @@ const editBlogPost = async (event) => {
 
 const editButton = document.querySelectorAll("#editBtn");
 
-// Iterates over all buttons on the page and allows for edit functionality
+// Iterates through all of the buttons on the page and provides editing functionality.
 for (let i = 0; i < editButton.length; i++) {
   editButton[i].addEventListener("click", editBlogPost);
 }
 
 const deleteButton = document.querySelectorAll("#deleteBtn");
 
-// Iterates over all buttons on the page and allows for delete functionality
+// Iterates through all of the buttons on the page and includes remove functionality.
 for (let i = 0; i < deleteButton.length; i++) {
   deleteButton[i].addEventListener("click", deletePostHandler);
 }

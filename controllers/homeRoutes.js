@@ -5,7 +5,7 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    // Get all blogPosts and JOIN with user data and comment data
+    // Get all blog posts and Join with user data and comment data
     const blogPostData = await BlogPost.findAll({
       include: [
         {
@@ -35,10 +35,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Route set up to find single blog post and render blogPost page
+// Route set up to find a single blog post and render blog post page
 router.get("/blogPost/:id", withAuth, async (req, res) => {
   try {
     const blogPostData = await BlogPost.findByPk(req.params.id, {
+
       // Join user data and comment data with blog post data
       include: [
         {
@@ -65,8 +66,8 @@ router.get("/blogPost/:id", withAuth, async (req, res) => {
   }
 });
 
-// route to allow logged in user access to the dashboard page
-// Use withAuth middleware to prevent access to route
+// route that allows logged-in user to access to the dashboard page
+// Uses withAuth middleware to prevent access to route if not
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -96,7 +97,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
-// NEW POST PAGE: Renders 'create.handlebars'; redirects to /login if not logged in
+// New blogPost page: Renders 'create.handlebars' -- redirects to /login if not logged in
 router.get("/create", async (req, res) => {
   try {
     if (req.session.logged_in) {
@@ -114,7 +115,7 @@ router.get("/create", async (req, res) => {
   }
 });
 
-// Route set up to be able to edit an existing blog post
+// Set up a route to be able to edit an existing blog post
 router.get("/create/:id", async (req, res) => {
   try {
     const blogPostData = await BlogPost.findByPk(req.params.id, {
@@ -151,7 +152,7 @@ router.get("/create/:id", async (req, res) => {
 });
 
 router.all("/login", (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+  // Redirect the request to another route if the user is already logged in.
   if (req.session.logged_in) {
     res.redirect("/dashboard");
     return;
