@@ -42,9 +42,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-var distDir = __dirname + "/dist/";
-
-app.use(express.static(distDir));
 app.use(routes);
 
 // Syncs sequelize with database
