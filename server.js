@@ -10,7 +10,7 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
@@ -42,6 +42,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+var distDir = __dirname + "/dist/";
+
+app.use(express.static(distDir));
 app.use(routes);
 
 // Syncs sequelize with database
