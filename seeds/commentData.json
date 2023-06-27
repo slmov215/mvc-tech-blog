@@ -1,3 +1,38 @@
 [
-{}
+  {
+    "comment_body": "What is this guy talking about!",
+    "date_created": "June 15, 2022",
+    "user_id": 2,
+    "blogPost_id": 1
+  },
+  {
+    "comment_body": "Never believe the media, Let me talk to your manager!!!",
+    "date_created": "June 23, 2023",
+    "user_id": 4,
+    "blogPost_id": 1
+  },
+  {
+    "comment_body": "I can SEE where this is going...",
+    "date_created": "June 26, 2022",
+    "user_id": 4,
+    "blogPost_id": 2
+  },
+  {
+    "comment_body": "OMG!!!",
+    "date_created": "May 28, 2023",
+    "user_id": 3,
+    "blogPost_id": 2
+  },
+  {
+    "comment_body": "Peace and love mannnnn, even for robots!",
+    "date_created": "June 18, 2022",
+    "user_id": 2,
+    "blogPost_id": 3
+  },
+  {
+    "comment_body": "What is your opinion?",
+    "date_created": "June 26, 2022",
+    "user_id": 1,
+    "blogPost_id": 3
+  }
 ]

@@ -1,3 +1,22 @@
 [
-{}
+  {
+    "name": "John Doe",
+    "email": "john.doe@johndoehub.com",
+    "password": "asdfghjkl"
+  },
+  {
+    "name": "Jane Doe",
+    "email": "jane.doe@johndoehub.com",
+    "password": "1234567890"
+  },
+  {
+    "name": "Richard Roe ",
+    "email": "richard.roe@johndoehub.com",
+    "password": "123password"
+  },
+  {
+    "name": "Karen Roe ",
+    "email": "justAnotherKaren@johndoehub.com",
+    "password": "123password"
+  }
 ]

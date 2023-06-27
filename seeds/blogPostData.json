@@ -1,3 +1,20 @@
 [
-{}
+  {
+    "title": "FBI warns consumers not to use public phone charging stations",
+    "description": "The FBI is warning consumers against using public phone charging stations in order to avoid exposing their devices to malicious software. Public USB stations like the kind found at malls and airports are being used by bad actors to spread malware and monitoring software, according to a tweet last week from the FBI’s Denver branch. The agency did not provide any specific examples....",
+    "date_created": "April 12, 2023",
+    "user_id": 1
+  },
+  {
+    "title": "More People Are Going Blind. AI Can Help Fight It",
+    "description": "Early detection is crucial for treating eye disease. AI-enhanced eye scan analyses could spot warning signs quicker—and reach patients at scale...",
+    "date_created": "June 26, 2023",
+    "user_id": 2
+  },
+  {
+    "title": "Deepmind’s AI Is Learning About the Art of Coding",
+    "description": "AlphaDev has made small but significant improvements to decades-old C++ algorithms. Its builders say that’s just the start...",
+    "date_created": "June 7, 2023",
+    "user_id": 3
+  }
 ]

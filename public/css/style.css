@@ -4,9 +4,9 @@ header {
   font-family: "Jomolhari", serif;
 }
 
-body {
-  /* background-color: #a28089; */
-}
+/* body {
+  background-color: #a28089;
+} */
 
 h1 {
   font-family: "Jomolhari", serif;
@@ -44,9 +44,9 @@ main {
   background-color: #f1dddf;
 }
 
-#logout {
-  /* background-color: #b6b2f9; */
-}
+/* #logout {
+  background-color: #b6b2f9;
+} */
 
 /* Input/textarea styles */
 
