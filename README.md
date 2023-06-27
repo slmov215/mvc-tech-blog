@@ -32,15 +32,20 @@ This application is quite simple to use. Users will interact with the site entir
 
 Click here for the [deloyed link (Heroku)](https://my-mvc-tech-blog-slmov-2a0483569b53.herokuapp.com/)
 
-![ScreenShot]()
+![ScreenShot](![mvc-homepage](https://github.com/slmov215/mvc-tech-blog/assets/127278005/fcbbc509-8c2d-4070-bfe6-a537a1b3ea10)
+)
 
-![ScreenShot]()
+![ScreenShot](![mvc-login](https://github.com/slmov215/mvc-tech-blog/assets/127278005/5f6a3078-a206-4dea-985e-0db8ec19dbf8)
+)
 
-![ScreenShot]()
+![ScreenShot](![mvc-dashboard](https://github.com/slmov215/mvc-tech-blog/assets/127278005/128db0f1-dd26-4004-b06d-2c39fd1fcf82)
+)
 
-![ScreenShot]()
+![ScreenShot](![mvc-blog-with-coment](https://github.com/slmov215/mvc-tech-blog/assets/127278005/ad753a20-4ab0-438b-bec6-7593a96b9d50)
+)
 
-![ScreenShot]()
+![ScreenShot](![mvc-create-a-post](https://github.com/slmov215/mvc-tech-blog/assets/127278005/f22abf24-60e8-43c1-92fd-f5f1bc42fa27)
+)
 
 ## License
 [MIT License](https://opensource.org/licenses/MIT)
